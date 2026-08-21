@@ -1,0 +1,15 @@
+restart
+add_force {/top/clk} -radix hex {1 0ns} {0 500ps} -repeat_every 1000ps
+add_force {/top/resetn} -radix hex {0 0ns}
+run 1 ns
+add_force {/top/req} -radix bin {1011 0ns}
+add_force {/top/packet_size} -radix hex {60003210 0ns}
+add_force {/top/resetn} -radix hex {1 0ns}
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns
+run 1 ns

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2,666 ps"></ZoomStartTime>
+      <ZoomEndTime time="6,667 ps"></ZoomEndTime>
+      <Cursor1Time time="6,000 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="212"></NameColumnWidth>
+      <ValueColumnWidth column_width="83"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/top/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/resetn" type="logic">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/req" type="array">
+      <obj_property name="ElementShortName">req[3:0]</obj_property>
+      <obj_property name="ObjectShortName">req[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/packet_size" type="array">
+      <obj_property name="ElementShortName">packet_size[31:0]</obj_property>
+      <obj_property name="ObjectShortName">packet_size[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/busy" type="logic">
+      <obj_property name="ElementShortName">busy</obj_property>
+      <obj_property name="ObjectShortName">busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/grant" type="array">
+      <obj_property name="ElementShortName">grant[3:0]</obj_property>
+      <obj_property name="ObjectShortName">grant[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/next_check" type="array">
+      <obj_property name="ElementShortName">next_check[3:0]</obj_property>
+      <obj_property name="ObjectShortName">next_check[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/ptr" type="array">
+      <obj_property name="ElementShortName">ptr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ptr[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/reset_ptr" type="array">
+      <obj_property name="ElementShortName">reset_ptr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">reset_ptr[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/N" type="array">
+      <obj_property name="ElementShortName">N[31:0]</obj_property>
+      <obj_property name="ObjectShortName">N[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/QUANTUM" type="array">
+      <obj_property name="ElementShortName">QUANTUM[31:0]</obj_property>
+      <obj_property name="ObjectShortName">QUANTUM[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top/PACKET_SIZE_WIDTH" type="array">
+      <obj_property name="ElementShortName">PACKET_SIZE_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PACKET_SIZE_WIDTH[31:0]</obj_property>
+   </wvobject>
+</wave_config>
