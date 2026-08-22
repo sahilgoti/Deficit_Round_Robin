@@ -1,10 +1,12 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/TCS_Hacathon/test1/test1.srcs/sources_1/new/priority.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module priority
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/TCS_Hacathon/test1/test1.srcs/sources_1/new/check.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/Deficit_Round_Robin/test1/test1.srcs/sources_1/new/priority.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module priority_queuer
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/Deficit_Round_Robin/test1/test1.srcs/sources_1/new/check.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module check
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/TCS_Hacathon/test1/test1.srcs/sources_1/new/top.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/Deficit_Round_Robin/test1/test1.srcs/sources_1/new/top.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module top
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/TCS_Hacathon/test1/test1.srcs/sources_1/new/decoder.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/Deficit_Round_Robin/test1/test1.srcs/sources_1/new/decoder.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module decoder
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/TCS_Hacathon/test1/test1.srcs/sources_1/new/fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/Deficit_Round_Robin/test1/test1.srcs/sources_1/new/fifo.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/exchange/Deficit_Round_Robin/test1/test1.srcs/sources_1/new/grant_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module grant_ctrl

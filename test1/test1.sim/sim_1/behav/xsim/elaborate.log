@@ -10,9 +10,10 @@ Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.check
+Compiling module xil_defaultlib.priority_queuer
 Compiling module xil_defaultlib.fifo
-Compiling module xil_defaultlib.decoder(WIDTH=2)
-Compiling module xil_defaultlib.priority
+Compiling module xil_defaultlib.grant_ctrl
+Compiling module xil_defaultlib.decoder
 Compiling module xil_defaultlib.top
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot top_behav

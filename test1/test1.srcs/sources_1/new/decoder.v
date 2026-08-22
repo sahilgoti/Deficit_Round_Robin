@@ -2,10 +2,10 @@
 
 module decoder #(
     parameter N     = 4,
-    parameter WIDTH = $clog2(N)
+    parameter PTR_WIDTH = 2
 ) (
     input                  enable,
-    input      [WIDTH-1:0] in,
+    input      [PTR_WIDTH-1:0] in,
     output reg [N-1:0]     out
 );
 

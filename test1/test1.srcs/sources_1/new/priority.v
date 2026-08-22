@@ -1,80 +1,110 @@
 `timescale 1ns / 1ps
 
-module priority #(
-    parameter N = 4
+module priority_queuer #(
+    parameter N = 4,
+    parameter PTR_WIDTH = 2
 ) (
-    input               clk,
-    input               resetn,
-    input  [N-1:0]      next_check,
-    input  [N*2-1:0]    ptr,
-    input               enable,
-    output [N-1:0]      grant,
-    output reg [N-1:0]  reset_ptr,
-    output reg          flag1
+    input                               clk,
+    input                               resetn,
+    input                               check_done,
+    input      [N-1:0]                  eligible,
+    input      [N*PTR_WIDTH-1:0]        ptr,
+    output reg                          fifo_wr_en,
+    output reg [PTR_WIDTH-1:0]          fifo_din,
+    input                               fifo_full,
+    output reg [PTR_WIDTH*N-1:0]        sequence,
+    output reg                          queue_done
 );
 
-    reg [N-1:0]             grant_done;
-    reg                     wr_en;
-    reg [$clog2(N)-1:0]     din;
-    wire [$clog2(N)-1:0]    dout;
-    wire                    full;
-    wire                    empty;
-    integer                 i, j;
+    localparam IDLE = 2'b00;
+    localparam PUSH = 2'b01;
 
-    always @(posedge clk) begin
-        if (!resetn) begin
-            grant_done <= {N{1'b0}};
-            reset_ptr  <= {N{1'b0}};
-            flag1      <= 1'b0;
-            wr_en      <= 1'b0;
-            din        <= {$clog2(N){1'b0}};
-        end else if (!enable) begin
-            grant_done <= {N{1'b0}};
-            reset_ptr  <= {N{1'b0}};
-            flag1      <= 1'b0;
-            wr_en      <= 1'b0;
-            din        <= {$clog2(N){1'b0}};
-        end else begin
-            flag1 <= 1'b1;
-            wr_en <= 1'b0;
-            for (j = N-1; j >= 0; j = j - 1) begin
+    reg [1:0] state;
+
+    integer i, j, rank_j;
+    reg [PTR_WIDTH*N-1:0] next_sequence;
+    reg [PTR_WIDTH:0] total_eligible;
+    reg [PTR_WIDTH*N-1:0] seq_buf;
+    reg [PTR_WIDTH:0] num_buf;
+    reg [PTR_WIDTH:0] push_cnt;
+
+    always @(*) begin
+        next_sequence = {(PTR_WIDTH*N){1'b0}};
+        total_eligible = 0;
+
+        for (j = 0; j < N; j = j + 1) begin
+            if (eligible[j]) begin
+                total_eligible = total_eligible + 1;
+                rank_j = 0;
                 for (i = 0; i < N; i = i + 1) begin
-                    if (!grant_done[i] && next_check[i] && (ptr[i*2 +: 2] == j)) begin
-                        wr_en         <= 1'b1;
-                        din           <= i[$clog2(N)-1:0];
-                        grant_done[i] <= 1'b1;
-                        reset_ptr[i]  <= 1'b1;
-                    end else begin
-                        reset_ptr[i]  <= 1'b0;
+                    if (eligible[i] && (i != j)) begin
+                        if ((ptr[i*PTR_WIDTH +: PTR_WIDTH] > ptr[j*PTR_WIDTH +: PTR_WIDTH]) || 
+                            ((ptr[i*PTR_WIDTH +: PTR_WIDTH] == ptr[j*PTR_WIDTH +: PTR_WIDTH]) && (i < j))) begin
+                            rank_j = rank_j + 1;
+                        end
                     end
                 end
-                grant_done <= {N{1'b0}};
+                if (rank_j < N) begin
+                    next_sequence[rank_j*PTR_WIDTH +: PTR_WIDTH] = j[PTR_WIDTH-1:0];
+                end
             end
-            flag1 <= 1'b0;
         end
     end
 
-    fifo #(
-        .DATA_WIDTH($clog2(N)),
-        .DEPTH(4)
-    ) fifo1 (
-        .clk(clk),
-        .resetn(resetn),
-        .wr_en(wr_en),
-        .rd_en(1'b1),
-        .din(din),
-        .dout(dout),
-        .full(full),
-        .empty(empty)
-    );
+    always @(posedge clk) begin
+        if (!resetn) begin
+            state      <= IDLE;
+            queue_done <= 1'b0;
+            sequence   <= {(PTR_WIDTH*N){1'b0}};
+            fifo_wr_en <= 1'b0;
+            fifo_din   <= {PTR_WIDTH{1'b0}};
+            push_cnt   <= 0;
+            seq_buf    <= {(PTR_WIDTH*N){1'b0}};
+            num_buf    <= 0;
+        end else begin
+            case (state)
+                IDLE: begin
+                    queue_done <= 1'b0;
+                    fifo_wr_en <= 1'b0;
+                    if (check_done) begin
+                        if (|eligible) begin
+                            sequence   <= next_sequence;
+                            seq_buf    <= next_sequence;
+                            num_buf    <= total_eligible;
+                            push_cnt   <= 0;
+                            state      <= PUSH;
+                        end else begin
+                            state      <= IDLE;
+                        end
+                    end
+                end
 
-    decoder #(
-        .N(N),
-        .WIDTH($clog2(N))
-    ) decoder1 (
-        .enable(wr_en),
-        .in(dout),
-        .out(grant)
-    );
+                PUSH: begin
+                    if (push_cnt < num_buf && !fifo_full) begin
+                        fifo_wr_en <= 1'b1;
+                        fifo_din   <= seq_buf[push_cnt*PTR_WIDTH +: PTR_WIDTH];
+                        push_cnt   <= push_cnt + 1;
+                        if (push_cnt == num_buf - 1) begin
+                            queue_done <= 1'b1;
+                            state      <= IDLE;
+                        end
+                    end else begin
+                        fifo_wr_en <= 1'b0;
+                        queue_done <= 1'b1;
+                        state      <= IDLE;
+                    end
+                end
+
+                default: begin
+                    state      <= IDLE;
+                    queue_done <= 1'b0;
+                    fifo_wr_en <= 1'b0;
+                end
+            endcase
+        end
+    end
 
 endmodule
+
+
+
