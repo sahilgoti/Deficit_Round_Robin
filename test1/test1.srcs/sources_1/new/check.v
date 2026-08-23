@@ -17,7 +17,7 @@ module check #(
     output reg                              check_done,
     output reg                              round_done
 );
-    reg [15:0] deficit_counter [N-1:0];
+    reg [8:0] deficit_counter [N-1:0];
     integer i;
     reg [1:0] state;
     localparam IDLE = 2'b00, ADD = 2'b01, EVAL = 2'b10, DONE = 2'b11;

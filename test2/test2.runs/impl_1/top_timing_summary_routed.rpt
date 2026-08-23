@@ -1,0 +1,750 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Aug 23 22:07:15 2026
+| Host         : COOKIE running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -routable_nets -report_unconstrained -file top_timing_summary_routed.rpt -pb top_timing_summary_routed.pb -rpx top_timing_summary_routed.rpx -warn_on_violation
+| Design       : top
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                  Violations  
+---------  ----------------  ---------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell  170         
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (170)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (634)
+5. checking no_input_delay (37)
+6. checking no_output_delay (16)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (170)
+--------------------------
+ There are 170 register/latch pins with no clock driven by root clock pin: clk (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (634)
+--------------------------------------------------
+ There are 634 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (37)
+-------------------------------
+ There are 37 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (16)
+--------------------------------
+ There are 16 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                  650          inf        0.000                      0                  650           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay           650 Endpoints
+Min Delay           650 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][4]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.555ns  (logic 2.263ns (26.451%)  route 6.292ns (73.549%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           1.150     8.555    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X107Y72        FDRE                                         r  u_arbiter/deficit_counter_reg[1][4]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][2]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.254ns  (logic 2.263ns (27.416%)  route 5.991ns (72.584%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           0.849     8.254    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X109Y72        FDRE                                         r  u_arbiter/deficit_counter_reg[1][2]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][8]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.254ns  (logic 2.263ns (27.416%)  route 5.991ns (72.584%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           0.849     8.254    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X109Y72        FDRE                                         r  u_arbiter/deficit_counter_reg[1][8]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[3][4]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.093ns  (logic 2.263ns (27.964%)  route 5.830ns (72.036%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          0.736     6.966    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y69        LUT6 (Prop_lut6_I5_O)        0.124     7.090 r  u_arbiter/deficit_counter[3][8]_i_1/O
+                         net (fo=9, routed)           1.003     8.093    u_arbiter/deficit_counter[3][8]_i_1_n_0
+    SLICE_X108Y74        FDRE                                         r  u_arbiter/deficit_counter_reg[3][4]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][0]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.084ns  (logic 2.263ns (27.992%)  route 5.822ns (72.008%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           0.679     8.085    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X106Y71        FDRE                                         r  u_arbiter/deficit_counter_reg[1][0]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[3][2]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.928ns  (logic 2.263ns (28.545%)  route 5.665ns (71.455%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          0.736     6.966    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y69        LUT6 (Prop_lut6_I5_O)        0.124     7.090 r  u_arbiter/deficit_counter[3][8]_i_1/O
+                         net (fo=9, routed)           0.838     7.928    u_arbiter/deficit_counter[3][8]_i_1_n_0
+    SLICE_X110Y73        FDRE                                         r  u_arbiter/deficit_counter_reg[3][2]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][1]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.925ns  (logic 2.263ns (28.554%)  route 5.662ns (71.446%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           0.520     7.925    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X108Y70        FDRE                                         r  u_arbiter/deficit_counter_reg[1][1]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][3]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.925ns  (logic 2.263ns (28.554%)  route 5.662ns (71.446%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           0.520     7.925    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X108Y70        FDRE                                         r  u_arbiter/deficit_counter_reg[1][3]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][5]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.925ns  (logic 2.263ns (28.554%)  route 5.662ns (71.446%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           0.520     7.925    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X108Y70        FDRE                                         r  u_arbiter/deficit_counter_reg[1][5]/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/deficit_counter_reg[1][6]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.925ns  (logic 2.263ns (28.554%)  route 5.662ns (71.446%))
+  Logic Levels:           8  (CARRY4=2 FDRE=1 LUT2=1 LUT4=1 LUT6=2 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/C
+    SLICE_X111Y70        FDRE (Prop_fdre_C_Q)         0.419     0.419 r  gen_fifos[0].u_fifo/rd_ptr_reg_rep[1]/Q
+                         net (fo=8, routed)           1.515     1.934    gen_fifos[0].u_fifo/mem_reg_0_15_0_5/ADDRA1
+    SLICE_X112Y70        RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.296     2.230 r  gen_fifos[0].u_fifo/mem_reg_0_15_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.262     3.492    u_arbiter/fifo_dout[1]
+    SLICE_X113Y73        LUT6 (Prop_lut6_I1_O)        0.124     3.616 r  u_arbiter/state2_carry_i_16/O
+                         net (fo=3, routed)           0.846     4.462    u_arbiter/current_pkt_size[1]
+    SLICE_X109Y71        LUT4 (Prop_lut4_I3_O)        0.124     4.586 r  u_arbiter/state2_carry_i_8/O
+                         net (fo=1, routed)           0.000     4.586    u_arbiter/state2_carry_i_8_n_0
+    SLICE_X109Y71        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     5.118 r  u_arbiter/state2_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.118    u_arbiter/state2_carry_n_0
+    SLICE_X109Y72        CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.389 r  u_arbiter/state2_carry__0/CO[0]
+                         net (fo=3, routed)           0.468     5.857    u_arbiter/state2_carry__0_n_3
+    SLICE_X111Y69        LUT2 (Prop_lut2_I0_O)        0.373     6.230 r  u_arbiter/FSM_sequential_state[2]_i_2/O
+                         net (fo=11, routed)          1.052     7.282    u_arbiter/FSM_sequential_state[2]_i_2_n_0
+    SLICE_X110Y67        LUT6 (Prop_lut6_I5_O)        0.124     7.406 r  u_arbiter/deficit_counter[1][8]_i_1/O
+                         net (fo=9, routed)           0.520     7.925    u_arbiter/deficit_counter[1][8]_i_1_n_0
+    SLICE_X108Y70        FDRE                                         r  u_arbiter/deficit_counter_reg[1][6]/CE
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/count_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[0].u_fifo/count_reg[5]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.272ns  (logic 0.186ns (68.315%)  route 0.086ns (31.685%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X110Y63        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/count_reg[4]/C
+    SLICE_X110Y63        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  gen_fifos[0].u_fifo/count_reg[4]/Q
+                         net (fo=4, routed)           0.086     0.227    gen_fifos[0].u_fifo/count_reg[4]
+    SLICE_X111Y63        LUT4 (Prop_lut4_I3_O)        0.045     0.272 r  gen_fifos[0].u_fifo/count[5]_i_2/O
+                         net (fo=1, routed)           0.000     0.272    gen_fifos[0].u_fifo/count[5]
+    SLICE_X111Y63        FDRE                                         r  gen_fifos[0].u_fifo/count_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[3].u_fifo/count_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[3].u_fifo/count_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.273ns  (logic 0.186ns (68.117%)  route 0.087ns (31.883%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X110Y61        FDRE                         0.000     0.000 r  gen_fifos[3].u_fifo/count_reg[0]/C
+    SLICE_X110Y61        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  gen_fifos[3].u_fifo/count_reg[0]/Q
+                         net (fo=8, routed)           0.087     0.228    gen_fifos[3].u_fifo/count_reg[0]
+    SLICE_X111Y61        LUT6 (Prop_lut6_I1_O)        0.045     0.273 r  gen_fifos[3].u_fifo/count[4]_i_1__2/O
+                         net (fo=1, routed)           0.000     0.273    gen_fifos[3].u_fifo/count__2[4]
+    SLICE_X111Y61        FDRE                                         r  gen_fifos[3].u_fifo/count_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_arbiter/FSM_sequential_state_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/fifo_rd_en_reg[3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.294ns  (logic 0.186ns (63.186%)  route 0.108ns (36.814%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X110Y66        FDRE                         0.000     0.000 r  u_arbiter/FSM_sequential_state_reg[0]/C
+    SLICE_X110Y66        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  u_arbiter/FSM_sequential_state_reg[0]/Q
+                         net (fo=17, routed)          0.108     0.249    u_arbiter/state[0]
+    SLICE_X111Y66        LUT6 (Prop_lut6_I4_O)        0.045     0.294 r  u_arbiter/fifo_rd_en[3]_i_1/O
+                         net (fo=1, routed)           0.000     0.294    u_arbiter/fifo_rd_en[3]_i_1_n_0
+    SLICE_X111Y66        FDRE                                         r  u_arbiter/fifo_rd_en_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[3].u_fifo/count_reg[5]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[3].u_fifo/count_reg[5]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.319ns  (logic 0.186ns (58.245%)  route 0.133ns (41.755%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y61        FDRE                         0.000     0.000 r  gen_fifos[3].u_fifo/count_reg[5]/C
+    SLICE_X111Y61        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  gen_fifos[3].u_fifo/count_reg[5]/Q
+                         net (fo=3, routed)           0.133     0.274    gen_fifos[3].u_fifo/count_reg[5]
+    SLICE_X111Y61        LUT4 (Prop_lut4_I2_O)        0.045     0.319 r  gen_fifos[3].u_fifo/count[5]_i_2__2/O
+                         net (fo=1, routed)           0.000     0.319    gen_fifos[3].u_fifo/count__2[5]
+    SLICE_X111Y61        FDRE                                         r  gen_fifos[3].u_fifo/count_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_arbiter/FSM_sequential_state_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_arbiter/fifo_rd_en_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.330ns  (logic 0.186ns (56.319%)  route 0.144ns (43.681%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X110Y66        FDRE                         0.000     0.000 r  u_arbiter/FSM_sequential_state_reg[1]/C
+    SLICE_X110Y66        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  u_arbiter/FSM_sequential_state_reg[1]/Q
+                         net (fo=28, routed)          0.144     0.285    u_arbiter/FSM_sequential_state_reg[1]_0[0]
+    SLICE_X111Y66        LUT6 (Prop_lut6_I3_O)        0.045     0.330 r  u_arbiter/fifo_rd_en[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.330    u_arbiter/fifo_rd_en[1]_i_1_n_0
+    SLICE_X111Y66        FDRE                                         r  u_arbiter/fifo_rd_en_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[0].u_fifo/mem_reg_0_15_6_7/DP/WADR3
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.337ns  (logic 0.128ns (38.013%)  route 0.209ns (61.987%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X113Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+    SLICE_X113Y70        FDRE (Prop_fdre_C_Q)         0.128     0.128 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/Q
+                         net (fo=15, routed)          0.209     0.337    gen_fifos[0].u_fifo/mem_reg_0_15_6_7/A3
+    SLICE_X112Y71        RAMD32                                       r  gen_fifos[0].u_fifo/mem_reg_0_15_6_7/DP/WADR3
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[0].u_fifo/mem_reg_0_15_6_7/SP/WADR3
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.337ns  (logic 0.128ns (38.013%)  route 0.209ns (61.987%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X113Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+    SLICE_X113Y70        FDRE (Prop_fdre_C_Q)         0.128     0.128 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/Q
+                         net (fo=15, routed)          0.209     0.337    gen_fifos[0].u_fifo/mem_reg_0_15_6_7/A3
+    SLICE_X112Y71        RAMD32                                       r  gen_fifos[0].u_fifo/mem_reg_0_15_6_7/SP/WADR3
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[0].u_fifo/mem_reg_0_15_6_7__0/DP/WADR3
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.337ns  (logic 0.128ns (38.013%)  route 0.209ns (61.987%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X113Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+    SLICE_X113Y70        FDRE (Prop_fdre_C_Q)         0.128     0.128 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/Q
+                         net (fo=15, routed)          0.209     0.337    gen_fifos[0].u_fifo/mem_reg_0_15_6_7__0/A3
+    SLICE_X112Y71        RAMD32                                       r  gen_fifos[0].u_fifo/mem_reg_0_15_6_7__0/DP/WADR3
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[0].u_fifo/mem_reg_0_15_6_7__0/SP/WADR3
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.337ns  (logic 0.128ns (38.013%)  route 0.209ns (61.987%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X113Y70        FDRE                         0.000     0.000 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/C
+    SLICE_X113Y70        FDRE (Prop_fdre_C_Q)         0.128     0.128 r  gen_fifos[0].u_fifo/wr_ptr_reg[3]/Q
+                         net (fo=15, routed)          0.209     0.337    gen_fifos[0].u_fifo/mem_reg_0_15_6_7__0/A3
+    SLICE_X112Y71        RAMD32                                       r  gen_fifos[0].u_fifo/mem_reg_0_15_6_7__0/SP/WADR3
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 gen_fifos[3].u_fifo/wr_ptr_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            gen_fifos[3].u_fifo/mem_reg_0_15_6_7/DP/WADR3
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.337ns  (logic 0.128ns (38.013%)  route 0.209ns (61.987%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X113Y76        FDRE                         0.000     0.000 r  gen_fifos[3].u_fifo/wr_ptr_reg[3]/C
+    SLICE_X113Y76        FDRE (Prop_fdre_C_Q)         0.128     0.128 r  gen_fifos[3].u_fifo/wr_ptr_reg[3]/Q
+                         net (fo=15, routed)          0.209     0.337    gen_fifos[3].u_fifo/mem_reg_0_15_6_7/A3
+    SLICE_X112Y77        RAMD32                                       r  gen_fifos[3].u_fifo/mem_reg_0_15_6_7/DP/WADR3
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+

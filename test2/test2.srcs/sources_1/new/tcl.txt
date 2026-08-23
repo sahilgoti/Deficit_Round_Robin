@@ -1,0 +1,55 @@
+# ==============================================================================
+# Vivado Simulator TCL Script for Deficit Round Robin (DRR) Top Module
+# Multi-Packet Burst & Per-Requester FIFO Verification
+# Usage in Vivado Simulator Console: source tcl.txt
+# ==============================================================================
+
+puts "=========================================================================="
+puts "   DRR Test Suite - Per-Requester FIFO & Multi-Packet Burst Arbitration"
+puts "=========================================================================="
+
+restart
+add_force {/tb_top/clk} -radix hex {1 0ns} {0 5ns} -repeat_every 10ns
+add_force {/tb_top/resetn} -radix hex {0 0ns}
+add_force {/tb_top/wr_en} -radix bin {0000 0ns}
+add_force {/tb_top/packet_size} -radix hex {00000000 0ns}
+add_force {/tb_top/start_round} -radix hex {0 0ns}
+
+run 20 ns
+add_force {/tb_top/resetn} -radix hex {1 0ns}
+run 10 ns
+
+puts "   -> System Reset Complete."
+puts "   -> Pushing Packet Streams into FIFOs..."
+
+# Load Packets into FIFOs:
+# Req 0: Pkts [30, 20, 20]
+# Req 2: Pkt  [255]
+# Req 3: Pkt  [50]
+
+add_force {/tb_top/packet_size} -radix hex {3200FF1E 0ns} ;# Req3=50(0x32), Req2=255(0xFF), Req0=30(0x1E)
+add_force {/tb_top/wr_en} -radix bin {1101 0ns}
+run 10 ns
+
+add_force {/tb_top/packet_size} -radix hex {00000014 0ns} ;# Req0=20(0x14)
+add_force {/tb_top/wr_en} -radix bin {0001 0ns}
+run 10 ns
+
+add_force {/tb_top/packet_size} -radix hex {00000014 0ns} ;# Req0=20(0x14)
+add_force {/tb_top/wr_en} -radix bin {0001 0ns}
+run 10 ns
+
+add_force {/tb_top/wr_en} -radix bin {0000 0ns}
+add_force {/tb_top/packet_size} -radix hex {00000000 0ns}
+run 10 ns
+
+puts "   -> Starting DRR Arbitration..."
+add_force {/tb_top/start_round} -radix hex {1 0ns}
+run 10 ns
+add_force {/tb_top/start_round} -radix hex {0 0ns}
+
+run 500 ns
+
+puts "=========================================================================="
+puts "   DRR TCL Verification Complete. Check Waveforms for Grants."
+puts "=========================================================================="

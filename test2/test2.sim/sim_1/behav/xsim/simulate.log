@@ -1,0 +1,15 @@
+Time resolution is 1 ps
+==========================================================================
+   DRR Multi-Packet Burst Arbitration Simulation Testbench
+==========================================================================
+[30000 ns] Phase 1: Loading Packets into Per-Requester FIFOs...
+[75000 ns] ---> GRANT 0 Asserted! Packet served from Requester 0 FIFO.
+[105000 ns] ---> GRANT 0 Asserted! Packet served from Requester 0 FIFO.
+[175000 ns] ---> GRANT 3 Asserted! Packet served from Requester 3 FIFO.
+[245000 ns] ---> GRANT 0 Asserted! Packet served from Requester 0 FIFO.
+[455000 ns] ---> GRANT 2 Asserted! Packet served from Requester 2 FIFO.
+==========================================================================
+   DRR Multi-Packet Burst Arbitration Test Completed Successfully!
+   All packets granted in strict compliance with DRR Deficit rules.
+==========================================================================
+$finish called at time : 535 ns : File "D:/exchange/Deficit_Round_Robin/test2/test2.srcs/sources_1/new/tb_top.v" Line 104

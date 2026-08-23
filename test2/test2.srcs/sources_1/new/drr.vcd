@@ -1,0 +1,456 @@
+$date
+	Sun Aug 23 04:55:59 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_top $end
+$var wire 1 ! round_done $end
+$var wire 4 " grant [3:0] $end
+$var wire 4 # fifo_full [3:0] $end
+$var wire 4 $ fifo_empty [3:0] $end
+$var wire 2 % current_req [1:0] $end
+$var wire 1 & busy $end
+$var reg 1 ' clk $end
+$var reg 32 ( packet_size [31:0] $end
+$var reg 1 ) resetn $end
+$var reg 4 * wr_en [3:0] $end
+$scope module uut $end
+$var wire 1 ' clk $end
+$var wire 32 + packet_size [31:0] $end
+$var wire 4 , req [3:0] $end
+$var wire 1 ) resetn $end
+$var wire 1 ! round_done $end
+$var wire 4 - grant [3:0] $end
+$var wire 4 . fifo_rd_en [3:0] $end
+$var wire 4 / fifo_full [3:0] $end
+$var wire 4 0 fifo_empty [3:0] $end
+$var wire 32 1 fifo_dout [31:0] $end
+$var wire 2 2 current_req [1:0] $end
+$var wire 1 & busy $end
+$scope begin gen_fifos[0] $end
+$scope module u_fifo $end
+$var wire 1 ' clk $end
+$var wire 8 3 din [7:0] $end
+$var wire 8 4 dout [7:0] $end
+$var wire 1 5 rd_en $end
+$var wire 1 ) resetn $end
+$var wire 1 6 wr_en $end
+$var wire 1 7 full $end
+$var wire 1 8 empty $end
+$var reg 6 9 count [5:0] $end
+$var reg 5 : rd_ptr [4:0] $end
+$var reg 5 ; wr_ptr [4:0] $end
+$upscope $end
+$upscope $end
+$scope begin gen_fifos[1] $end
+$scope module u_fifo $end
+$var wire 1 ' clk $end
+$var wire 8 < din [7:0] $end
+$var wire 8 = dout [7:0] $end
+$var wire 1 > rd_en $end
+$var wire 1 ) resetn $end
+$var wire 1 ? wr_en $end
+$var wire 1 @ full $end
+$var wire 1 A empty $end
+$var reg 6 B count [5:0] $end
+$var reg 5 C rd_ptr [4:0] $end
+$var reg 5 D wr_ptr [4:0] $end
+$upscope $end
+$upscope $end
+$scope begin gen_fifos[2] $end
+$scope module u_fifo $end
+$var wire 1 ' clk $end
+$var wire 8 E din [7:0] $end
+$var wire 8 F dout [7:0] $end
+$var wire 1 G rd_en $end
+$var wire 1 ) resetn $end
+$var wire 1 H wr_en $end
+$var wire 1 I full $end
+$var wire 1 J empty $end
+$var reg 6 K count [5:0] $end
+$var reg 5 L rd_ptr [4:0] $end
+$var reg 5 M wr_ptr [4:0] $end
+$upscope $end
+$upscope $end
+$scope begin gen_fifos[3] $end
+$scope module u_fifo $end
+$var wire 1 ' clk $end
+$var wire 8 N din [7:0] $end
+$var wire 8 O dout [7:0] $end
+$var wire 1 P rd_en $end
+$var wire 1 ) resetn $end
+$var wire 1 Q wr_en $end
+$var wire 1 R full $end
+$var wire 1 S empty $end
+$var reg 6 T count [5:0] $end
+$var reg 5 U rd_ptr [4:0] $end
+$var reg 5 V wr_ptr [4:0] $end
+$upscope $end
+$upscope $end
+$scope module u_arbiter $end
+$var wire 1 ' clk $end
+$var wire 32 W fifo_dout [31:0] $end
+$var wire 4 X fifo_empty [3:0] $end
+$var wire 1 ) resetn $end
+$var reg 1 & busy $end
+$var reg 2 Y current_req [1:0] $end
+$var reg 4 Z fifo_rd_en [3:0] $end
+$var reg 4 [ flag [3:0] $end
+$var reg 4 \ grant [3:0] $end
+$var reg 1 ! round_done $end
+$var reg 3 ] state [2:0] $end
+$var integer 32 ^ i [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx ^
+bx ]
+bx \
+bx [
+bx Z
+bx Y
+bx X
+bx W
+bx V
+bx U
+bx T
+xS
+xR
+0Q
+xP
+bx O
+b0 N
+bx M
+bx L
+bx K
+xJ
+xI
+0H
+xG
+bx F
+b0 E
+bx D
+bx C
+bx B
+xA
+x@
+0?
+x>
+bx =
+b0 <
+bx ;
+bx :
+bx 9
+x8
+x7
+06
+x5
+bx 4
+b0 3
+bx 2
+bx 1
+bx 0
+bx /
+bx .
+bx -
+b0 ,
+b0 +
+b0 *
+0)
+b0 (
+0'
+x&
+bx %
+bx $
+bx #
+bx "
+x!
+$end
+#5000
+0P
+0G
+0>
+05
+07
+18
+b0 9
+b0 :
+b0 ;
+0@
+1A
+b0 B
+b0 C
+b0 D
+0I
+1J
+b0 K
+b0 L
+b0 M
+b0 #
+b0 /
+0R
+b1111 $
+b1111 0
+b1111 X
+1S
+b0 T
+b0 U
+b0 V
+b0 [
+0!
+0&
+b0 "
+b0 -
+b0 \
+b0 .
+b0 Z
+b0 %
+b0 2
+b0 Y
+b0 ]
+b100 ^
+1'
+#10000
+0'
+#15000
+b100 ^
+1'
+#20000
+0'
+1)
+#25000
+1'
+#30000
+16
+1H
+1Q
+b110010 N
+b11111111 E
+b11110 3
+0'
+b1101 *
+b1101 ,
+b110010111111110000000000011110 (
+b110010111111110000000000011110 +
+#35000
+0S
+b1 T
+b1 V
+b110010 O
+0J
+b1 K
+b1 M
+b11111111 F
+b10 $
+b10 0
+b10 X
+08
+b1 9
+b1 ;
+b11001011111111xxxxxxxx00011110 1
+b11001011111111xxxxxxxx00011110 W
+b11110 4
+1'
+#40000
+0H
+0Q
+b10100 3
+0'
+b1 *
+b1 ,
+b110010111111110000000000010100 (
+b110010111111110000000000010100 +
+#45000
+b10 9
+b10 ;
+b1 ]
+1&
+1'
+#50000
+0'
+#55000
+15
+b10 ]
+b1 .
+b1 Z
+b11 9
+b11 ;
+1'
+#60000
+b0 3
+b0 E
+b0 N
+06
+0'
+b0 (
+b0 +
+b0 *
+b0 ,
+#65000
+b10 9
+b11001011111111xxxxxxxx00010100 1
+b11001011111111xxxxxxxx00010100 W
+b10100 4
+b1 :
+b1 ]
+b1 %
+b1 2
+b1 Y
+b1 "
+b1 -
+b1 \
+1'
+#70000
+0'
+#75000
+05
+b0 ]
+0&
+1!
+b10 %
+b10 2
+b10 Y
+b0 .
+b0 Z
+b0 "
+b0 -
+b0 \
+b1 9
+b10 :
+1'
+#80000
+0'
+#85000
+b1 ]
+1&
+0!
+1'
+#90000
+0'
+#95000
+1G
+b10 ]
+b100 .
+b100 Z
+1'
+#100000
+0'
+#105000
+0G
+b110 $
+b110 0
+b110 X
+1J
+b0 K
+b110010xxxxxxxxxxxxxxxx00010100 1
+b110010xxxxxxxxxxxxxxxx00010100 W
+bx F
+b1 L
+b1 ]
+b11 %
+b11 2
+b11 Y
+b100 [
+b0 .
+b0 Z
+1'
+#110000
+0'
+#115000
+1P
+b10 ]
+b1000 .
+b1000 Z
+1'
+#120000
+0'
+#125000
+b1110 $
+b1110 0
+b1110 X
+1S
+b0 T
+bx00010100 1
+bx00010100 W
+bx O
+b1 U
+b1 ]
+b0 %
+b0 2
+b0 Y
+b1000 "
+b1000 -
+b1000 \
+1'
+#130000
+0'
+#135000
+15
+0P
+b10 ]
+b1 .
+b1 Z
+b0 "
+b0 -
+b0 \
+1'
+#140000
+0'
+#145000
+b1111 $
+b1111 0
+b1111 X
+18
+b0 9
+bx 1
+bx W
+bx 4
+b11 :
+b1 ]
+b1 %
+b1 2
+b1 Y
+b1 "
+b1 -
+b1 \
+1'
+#150000
+0'
+#155000
+05
+b0 ]
+0&
+1!
+b10 %
+b10 2
+b10 Y
+b0 .
+b0 Z
+b0 "
+b0 -
+b0 \
+1'
+#160000
+0'
+#165000
+0!
+1'
+#170000
+0'
+#175000
+1'
+#180000
+0'
+#185000
+1'
+#190000
+0'
+#195000
+1'
