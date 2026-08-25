@@ -58,32 +58,38 @@ module arbiter #(
         found = 1'b0;
         g_sel = 0;
         for (offset = 0; offset < N; offset = offset + 1) begin
-            idx = (rr_ptr + offset) % N;
+            if (need_quantum) begin
+                idx = (rr_ptr + 1 + offset) % N;
+            end else begin
+                idx = (rr_ptr + offset) % N;
+            end
 
             if (!found && eligible[idx]) begin
                 found = 1'b1;
                 g_sel = idx;
             end
         end
+
+        if (found && (|req)) begin
+            grant      = (1'b1 << g_sel);
+            grant_done = (1'b1 << g_sel);
+        end else begin
+            grant      = {N{1'b0}};
+            grant_done = {N{1'b0}};
+        end
+
+        busy       = (|req);
+        next_check = eligible;
     end
 
     always @(posedge clk) begin
         if (!resetn) begin
-            grant      <= {N{1'b0}};
-            busy       <= 1'b0;
-            next_check <= {N{1'b0}};
-            grant_done <= {N{1'b0}};
-            rr_ptr     <= 0;
+            rr_ptr <= N - 1;
             for (i = 0; i < N; i = i + 1) begin
                 deficit_counter[i] <= {DEFICIT_WIDTH{1'b0}};
             end
         end else begin
-            busy       <= (|req);
-            next_check <= eligible;
-
             if (found && (|req)) begin
-                grant                  <= (1'b1 << g_sel);
-                grant_done             <= (1'b1 << g_sel);
                 deficit_counter[g_sel] <= avail_deficit[g_sel] - pkt_size[g_sel];
 
                 for (i = 0; i < N; i = i + 1) begin
@@ -96,10 +102,8 @@ module arbiter #(
                     end
                 end
 
-                rr_ptr <= (g_sel + 1) % N;
+                rr_ptr <= g_sel;
             end else begin
-                grant      <= {N{1'b0}};
-                grant_done <= {N{1'b0}};
                 for (i = 0; i < N; i = i + 1) begin
                     if (!req[i]) begin
                         deficit_counter[i] <= {DEFICIT_WIDTH{1'b0}};

@@ -17,7 +17,6 @@ module tb_arbiter_selfcheck;
     wire    [N-1:0]                      grant;
     wire                                 busy;
     wire    [N-1:0] next_check;
-    wire    [N-1:0] grant_done;
 
     // Instantiate the DRR arbiter module
     arbiter #(
@@ -31,8 +30,7 @@ module tb_arbiter_selfcheck;
         .packet_size(packet_size),
         .grant(grant),
         .busy(busy),
-        .next_check(next_check),
-        .grant_done(grant_done)
+        .next_check(next_check)
     );
 
     // 100 MHz Clock (10ns period)
@@ -66,7 +64,7 @@ module tb_arbiter_selfcheck;
 
     // Main Test Control Sequence
     initial begin
-        $dumpfile("drr_multi_packet.vcd");
+        $dumpfile("drr.vcd");
         $dumpvars(0, tb_arbiter_selfcheck);
 
         // Clock & Reset Initialization
@@ -76,7 +74,6 @@ module tb_arbiter_selfcheck;
         packet_size = {N*PACKET_SIZE_WIDTH{1'b0}};
 
         // Setup Multi-Packet Queues for each requester
-        // Requester 0: 3 Packets -> [30 Bytes, 20 Bytes, 25 Bytes]
         pkt_mem[0][0] = 8'd30; pkt_mem[0][1] = 8'd20; pkt_mem[0][2] = 8'd25;
         pkt_count[0] = 3; pkt_head[0] = 0; total_granted_pkts[0] = 0;
 
@@ -92,8 +89,8 @@ module tb_arbiter_selfcheck;
         pkt_mem[3][0] = 8'd50; pkt_mem[3][1] = 8'd60;
         pkt_count[3] = 2; pkt_head[3] = 0; total_granted_pkts[3] = 0;
 
-        #25;
-        resetn = 1; // Release reset
+        #25.1;
+        resetn = 1; // Release reset before posedge at 25ns
 
         // Present initial head packet of each requester to packet_size bus
         packet_size[0*PACKET_SIZE_WIDTH +: PACKET_SIZE_WIDTH] = pkt_mem[0][0];

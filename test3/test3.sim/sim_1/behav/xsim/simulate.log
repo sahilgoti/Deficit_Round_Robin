@@ -8,7 +8,6 @@ Initial Queues:
   Requester 2: 3 Packets [70, 45, 10 Bytes]
   Requester 3: 2 Packets [50, 60 Bytes]
 --------------------------------------------------------------------------
-[25000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
 [35000 ns] -> GRANT issued to Requester 0 | Packet #1 | Size: 30 Bytes
 [35000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
 [45000 ns] -> GRANT issued to Requester 0 | Packet #2 | Size: 20 Bytes
@@ -19,29 +18,24 @@ Initial Queues:
 [65000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
 [75000 ns] -> GRANT issued to Requester 0 | Packet #3 | Size: 25 Bytes
 [75000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[85000 ns] -> GRANT issued to Requester 0 | Packet #3 | Size: 25 Bytes
+[85000 ns] -> GRANT issued to Requester 1 | Packet #2 | Size: 35 Bytes
 [85000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[95000 ns] -> GRANT issued to Requester 1 | Packet #2 | Size: 35 Bytes
+[95000 ns] -> GRANT issued to Requester 1 | Packet #3 | Size: 15 Bytes
 [95000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[105000 ns] -> GRANT issued to Requester 1 | Packet #3 | Size: 15 Bytes
+[105000 ns] -> GRANT issued to Requester 2 | Packet #1 | Size: 70 Bytes
 [105000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[115000 ns] -> GRANT issued to Requester 1 | Packet #3 | Size: 15 Bytes
+[115000 ns] -> GRANT issued to Requester 2 | Packet #2 | Size: 45 Bytes
 [115000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[125000 ns] -> GRANT issued to Requester 2 | Packet #1 | Size: 70 Bytes
+[125000 ns] -> GRANT issued to Requester 2 | Packet #3 | Size: 10 Bytes
 [125000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
 [135000 ns] -> GRANT issued to Requester 3 | Packet #2 | Size: 60 Bytes
 [135000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[145000 ns] -> GRANT issued to Requester 2 | Packet #2 | Size: 45 Bytes
 [145000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[155000 ns] -> GRANT issued to Requester 2 | Packet #3 | Size: 10 Bytes
 [155000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[165000 ns] -> GRANT issued to Requester 2 | Packet #3 | Size: 10 Bytes
 [165000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
 [175000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[185000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
-[195000 ns] -> DRR Round complete. Quantum (64) added to active deficits.
 ==========================================================================
    Multi-Packet Verification Completed Successfully!
-   Total Packets Granted: Req0=4, Req1=4, Req2=4, Req3=2
+   Total Packets Granted: Req0=3, Req1=3, Req2=3, Req3=2
 ==========================================================================
-$finish called at time : 205 ns : File "D:/exchange/Deficit_Round_Robin/test3/test3.srcs/sources_1/new/tb_arbiter.v" Line 128
+$finish called at time : 185 ns : File "D:/exchange/Deficit_Round_Robin/test3/test3.srcs/sources_1/new/tb_arbiter.v" Line 125

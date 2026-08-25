@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Mon Aug 24 02:13:40 2026
+| Date         : Tue Aug 25 08:41:28 2026
 | Host         : COOKIE running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -routable_nets -report_unconstrained -file arbiter_timing_summary_routed.rpt -pb arbiter_timing_summary_routed.pb -rpx arbiter_timing_summary_routed.rpx -warn_on_violation
 | Design       : arbiter
@@ -43,7 +43,7 @@ Timing Summary Report
 
 Rule       Severity          Description                  Violations  
 ---------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  63          
+TIMING-17  Critical Warning  Non-clocked sequential cell  50          
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -53,12 +53,12 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (63)
+1. checking no_clock (50)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (148)
+4. checking unconstrained_internal_endpoints (98)
 5. checking no_input_delay (37)
-6. checking no_output_delay (13)
+6. checking no_output_delay (12)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -66,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (63)
+1. checking no_clock (50)
 -------------------------
- There are 63 register/latch pins with no clock driven by root clock pin: clk (HIGH)
+ There are 50 register/latch pins with no clock driven by root clock pin: clk (HIGH)
 
 
 2. checking constant_clock (0)
@@ -81,9 +81,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (148)
---------------------------------------------------
- There are 148 pins that are not constrained for maximum delay. (HIGH)
+4. checking unconstrained_internal_endpoints (98)
+-------------------------------------------------
+ There are 98 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -95,9 +95,9 @@ Table of Contents
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (13)
+6. checking no_output_delay (12)
 --------------------------------
- There are 13 ports with no output delay specified. (HIGH)
+ There are 12 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -142,16 +142,20 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                  161          inf        0.000                      0                  161           NA           NA                      NA                    NA  
+        inf        0.000                      0                  111          inf        0.000                      0                  111           NA           NA                      NA                    NA  
 
 
-There are no user specified timing constraints.
+All user specified timing constraints are met.
 
 
 ------------------------------------------------------------------------------------------------
 | Clock Summary
 | -------------
 ------------------------------------------------------------------------------------------------
+
+Clock  Waveform(ns)       Period(ns)      Frequency(MHz)
+-----  ------------       ----------      --------------
+clk    {0.000 10.000}     20.000          50.000          
 
 
 ------------------------------------------------------------------------------------------------
@@ -211,602 +215,592 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay           161 Endpoints
-Min Delay           161 Endpoints
+Max Delay           111 Endpoints
+Min Delay           111 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[3][9]/D
+  Destination:            grant[0]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.138ns  (logic 5.894ns (34.389%)  route 11.244ns (65.611%))
-  Logic Levels:           18  (CARRY4=8 IBUF=1 LUT2=2 LUT4=2 LUT5=2 LUT6=3)
+  Data Path Delay:        22.450ns  (logic 8.131ns (36.218%)  route 14.319ns (63.782%))
+  Logic Levels:           17  (CARRY4=5 IBUF=1 LUT2=4 LUT4=2 LUT5=2 LUT6=2 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.003 r  deficit_counter_reg[3][7]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.003    deficit_counter_reg[3][7]_i_2_n_0
-    SLICE_X4Y22          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323    15.326 r  deficit_counter_reg[3][11]_i_4/O[1]
-                         net (fo=4, routed)           1.506    16.832    deficit_counter_reg[3][11]_i_4_n_6
-    SLICE_X6Y26          LUT5 (Prop_lut5_I1_O)        0.306    17.138 r  deficit_counter[3][9]_i_1/O
-                         net (fo=1, routed)           0.000    17.138    deficit_counter[3][9]_i_1_n_0
-    SLICE_X6Y26          FDRE                                         r  deficit_counter_reg[3][9]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 r  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 r  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 r  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.006    14.629    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I5_O)        0.124    14.753 r  grant_OBUF[1]_inst_i_6/O
+                         net (fo=2, routed)           0.838    15.591    grant_OBUF[1]_inst_i_6_n_0
+    SLICE_X8Y20          LUT5 (Prop_lut5_I2_O)        0.124    15.715 r  grant_OBUF[0]_inst_i_2/O
+                         net (fo=55, routed)          1.644    17.359    rr_ptr0
+    SLICE_X2Y15          LUT2 (Prop_lut2_I0_O)        0.119    17.478 r  grant_OBUF[0]_inst_i_1/O
+                         net (fo=2, routed)           2.164    19.642    grant_done_OBUF[0]
+    U7                   OBUF (Prop_obuf_I_O)         2.809    22.450 r  grant_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    22.450    grant[0]
+    U7                                                                r  grant[0]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[3][10]/D
+  Destination:            grant_done[0]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.046ns  (logic 5.805ns (34.052%)  route 11.242ns (65.948%))
-  Logic Levels:           18  (CARRY4=8 IBUF=1 LUT2=2 LUT4=2 LUT5=2 LUT6=3)
+  Data Path Delay:        22.238ns  (logic 8.138ns (36.596%)  route 14.100ns (63.404%))
+  Logic Levels:           17  (CARRY4=5 IBUF=1 LUT2=4 LUT4=2 LUT5=2 LUT6=2 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.003 r  deficit_counter_reg[3][7]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.003    deficit_counter_reg[3][7]_i_2_n_0
-    SLICE_X4Y22          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    15.242 r  deficit_counter_reg[3][11]_i_4/O[2]
-                         net (fo=4, routed)           1.503    16.745    deficit_counter_reg[3][11]_i_4_n_5
-    SLICE_X5Y25          LUT5 (Prop_lut5_I1_O)        0.301    17.046 r  deficit_counter[3][10]_i_1/O
-                         net (fo=1, routed)           0.000    17.046    deficit_counter[3][10]_i_1_n_0
-    SLICE_X5Y25          FDRE                                         r  deficit_counter_reg[3][10]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 r  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 r  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 r  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.006    14.629    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I5_O)        0.124    14.753 r  grant_OBUF[1]_inst_i_6/O
+                         net (fo=2, routed)           0.838    15.591    grant_OBUF[1]_inst_i_6_n_0
+    SLICE_X8Y20          LUT5 (Prop_lut5_I2_O)        0.124    15.715 r  grant_OBUF[0]_inst_i_2/O
+                         net (fo=55, routed)          1.644    17.359    rr_ptr0
+    SLICE_X2Y15          LUT2 (Prop_lut2_I0_O)        0.119    17.478 r  grant_OBUF[0]_inst_i_1/O
+                         net (fo=2, routed)           1.945    19.423    grant_done_OBUF[0]
+    V7                   OBUF (Prop_obuf_I_O)         2.816    22.238 r  grant_done_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    22.238    grant_done[0]
+    V7                                                                r  grant_done[0]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[2][11]/D
+  Destination:            grant[1]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.957ns  (logic 5.887ns (34.714%)  route 11.071ns (65.286%))
-  Logic Levels:           18  (CARRY4=8 IBUF=1 LUT2=2 LUT4=2 LUT5=1 LUT6=4)
+  Data Path Delay:        21.550ns  (logic 7.926ns (36.779%)  route 13.624ns (63.221%))
+  Logic Levels:           17  (CARRY4=5 IBUF=1 LUT2=4 LUT4=2 LUT5=1 LUT6=3 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.003 r  deficit_counter_reg[3][7]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.003    deficit_counter_reg[3][7]_i_2_n_0
-    SLICE_X4Y22          CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    15.318 r  deficit_counter_reg[3][11]_i_4/O[3]
-                         net (fo=4, routed)           1.332    16.650    deficit_counter_reg[3][11]_i_4_n_4
-    SLICE_X3Y27          LUT6 (Prop_lut6_I2_O)        0.307    16.957 r  deficit_counter[2][11]_i_2/O
-                         net (fo=1, routed)           0.000    16.957    deficit_counter[2][11]_i_2_n_0
-    SLICE_X3Y27          FDRE                                         r  deficit_counter_reg[2][11]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 f  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 f  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 f  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.016    14.639    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I0_O)        0.124    14.763 r  grant_OBUF[1]_inst_i_5/O
+                         net (fo=2, routed)           0.670    15.433    grant_OBUF[1]_inst_i_5_n_0
+    SLICE_X8Y20          LUT6 (Prop_lut6_I3_O)        0.124    15.557 r  grant_OBUF[1]_inst_i_2/O
+                         net (fo=10, routed)          0.901    16.459    sel0[0]
+    SLICE_X7Y15          LUT2 (Prop_lut2_I0_O)        0.124    16.583 r  grant_OBUF[1]_inst_i_1/O
+                         net (fo=29, routed)          2.369    18.951    grant_done_OBUF[1]
+    W5                   OBUF (Prop_obuf_I_O)         2.598    21.550 r  grant_OBUF[1]_inst/O
+                         net (fo=0)                   0.000    21.550    grant[1]
+    W5                                                                r  grant[1]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[2][9]/D
+  Destination:            grant_done[1]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.820ns  (logic 5.894ns (35.039%)  route 10.926ns (64.961%))
-  Logic Levels:           18  (CARRY4=8 IBUF=1 LUT2=2 LUT4=2 LUT5=1 LUT6=4)
+  Data Path Delay:        21.244ns  (logic 7.907ns (37.221%)  route 13.337ns (62.779%))
+  Logic Levels:           17  (CARRY4=5 IBUF=1 LUT2=4 LUT4=2 LUT5=1 LUT6=3 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.003 r  deficit_counter_reg[3][7]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.003    deficit_counter_reg[3][7]_i_2_n_0
-    SLICE_X4Y22          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323    15.326 r  deficit_counter_reg[3][11]_i_4/O[1]
-                         net (fo=4, routed)           1.188    16.514    deficit_counter_reg[3][11]_i_4_n_6
-    SLICE_X2Y26          LUT6 (Prop_lut6_I2_O)        0.306    16.820 r  deficit_counter[2][9]_i_1/O
-                         net (fo=1, routed)           0.000    16.820    deficit_counter[2][9]_i_1_n_0
-    SLICE_X2Y26          FDRE                                         r  deficit_counter_reg[2][9]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 f  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 f  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 f  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.016    14.639    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I0_O)        0.124    14.763 r  grant_OBUF[1]_inst_i_5/O
+                         net (fo=2, routed)           0.670    15.433    grant_OBUF[1]_inst_i_5_n_0
+    SLICE_X8Y20          LUT6 (Prop_lut6_I3_O)        0.124    15.557 r  grant_OBUF[1]_inst_i_2/O
+                         net (fo=10, routed)          0.901    16.459    sel0[0]
+    SLICE_X7Y15          LUT2 (Prop_lut2_I0_O)        0.124    16.583 r  grant_OBUF[1]_inst_i_1/O
+                         net (fo=29, routed)          2.081    18.664    grant_done_OBUF[1]
+    U5                   OBUF (Prop_obuf_I_O)         2.580    21.244 r  grant_done_OBUF[1]_inst/O
+                         net (fo=0)                   0.000    21.244    grant_done[1]
+    U5                                                                r  grant_done[1]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[2][10]/D
+  Destination:            deficit_counter_reg[0][5]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.758ns  (logic 5.805ns (34.637%)  route 10.954ns (65.363%))
-  Logic Levels:           18  (CARRY4=8 IBUF=1 LUT2=2 LUT4=2 LUT5=1 LUT6=4)
+  Data Path Delay:        21.124ns  (logic 6.620ns (31.341%)  route 14.503ns (68.659%))
+  Logic Levels:           20  (CARRY4=7 IBUF=1 LUT2=3 LUT4=2 LUT5=1 LUT6=6)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.003 r  deficit_counter_reg[3][7]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.003    deficit_counter_reg[3][7]_i_2_n_0
-    SLICE_X4Y22          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    15.242 r  deficit_counter_reg[3][11]_i_4/O[2]
-                         net (fo=4, routed)           1.215    16.457    deficit_counter_reg[3][11]_i_4_n_5
-    SLICE_X2Y26          LUT6 (Prop_lut6_I2_O)        0.301    16.758 r  deficit_counter[2][10]_i_1/O
-                         net (fo=1, routed)           0.000    16.758    deficit_counter[2][10]_i_1_n_0
-    SLICE_X2Y26          FDRE                                         r  deficit_counter_reg[2][10]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 f  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 f  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 f  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.016    14.639    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I0_O)        0.124    14.763 r  grant_OBUF[1]_inst_i_5/O
+                         net (fo=2, routed)           0.670    15.433    grant_OBUF[1]_inst_i_5_n_0
+    SLICE_X8Y20          LUT6 (Prop_lut6_I3_O)        0.124    15.557 r  grant_OBUF[1]_inst_i_2/O
+                         net (fo=10, routed)          1.593    17.151    sel0[0]
+    SLICE_X6Y16          LUT6 (Prop_lut6_I3_O)        0.124    17.275 r  deficit_counter[3][3]_i_6/O
+                         net (fo=2, routed)           0.992    18.267    deficit_counter[3][3]_i_6_n_0
+    SLICE_X3Y17          LUT6 (Prop_lut6_I0_O)        0.124    18.391 r  deficit_counter[3][3]_i_10/O
+                         net (fo=1, routed)           0.000    18.391    deficit_counter[3][3]_i_10_n_0
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    18.923 r  deficit_counter_reg[3][3]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.923    deficit_counter_reg[3][3]_i_2_n_0
+    SLICE_X3Y18          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    19.257 r  deficit_counter_reg[3][7]_i_2/O[1]
+                         net (fo=4, routed)           1.564    20.821    deficit_counter_reg[3][7]_i_2_n_6
+    SLICE_X2Y15          LUT6 (Prop_lut6_I2_O)        0.303    21.124 r  deficit_counter[0][5]_i_1/O
+                         net (fo=1, routed)           0.000    21.124    deficit_counter[0][5]_i_1_n_0
+    SLICE_X2Y15          FDRE                                         r  deficit_counter_reg[0][5]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[3][5]/D
+  Destination:            grant[3]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.757ns  (logic 5.777ns (34.472%)  route 10.981ns (65.528%))
-  Logic Levels:           17  (CARRY4=7 IBUF=1 LUT2=2 LUT4=2 LUT5=2 LUT6=3)
+  Data Path Delay:        21.087ns  (logic 7.792ns (36.952%)  route 13.295ns (63.048%))
+  Logic Levels:           16  (CARRY4=5 IBUF=1 LUT2=3 LUT4=2 LUT5=1 LUT6=3 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323    15.209 r  deficit_counter_reg[3][7]_i_2/O[1]
-                         net (fo=4, routed)           1.242    16.451    deficit_counter_reg[3][7]_i_2_n_6
-    SLICE_X6Y26          LUT5 (Prop_lut5_I1_O)        0.306    16.757 r  deficit_counter[3][5]_i_1/O
-                         net (fo=1, routed)           0.000    16.757    deficit_counter[3][5]_i_1_n_0
-    SLICE_X6Y26          FDRE                                         r  deficit_counter_reg[3][5]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 r  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 r  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.507    13.092    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.440 f  grant_OBUF[3]_inst_i_10/O
+                         net (fo=4, routed)           1.027    14.467    grant_OBUF[3]_inst_i_10_n_0
+    SLICE_X9Y20          LUT6 (Prop_lut6_I2_O)        0.124    14.591 r  grant_OBUF[3]_inst_i_4/O
+                         net (fo=3, routed)           0.687    15.278    grant_OBUF[3]_inst_i_4_n_0
+    SLICE_X7Y20          LUT6 (Prop_lut6_I2_O)        0.124    15.402 r  grant_OBUF[3]_inst_i_1/O
+                         net (fo=26, routed)          3.096    18.498    grant_done_OBUF[3]
+    W7                   OBUF (Prop_obuf_I_O)         2.588    21.087 r  grant_OBUF[3]_inst/O
+                         net (fo=0)                   0.000    21.087    grant[3]
+    W7                                                                r  grant[3]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[3][7]/D
+  Destination:            deficit_counter_reg[0][11]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.719ns  (logic 5.770ns (34.509%)  route 10.950ns (65.491%))
-  Logic Levels:           17  (CARRY4=7 IBUF=1 LUT2=2 LUT4=2 LUT5=2 LUT6=3)
+  Data Path Delay:        21.077ns  (logic 6.353ns (30.144%)  route 14.724ns (69.856%))
+  Logic Levels:           19  (CARRY4=6 IBUF=1 LUT2=4 LUT4=2 LUT5=1 LUT6=5)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    15.201 r  deficit_counter_reg[3][7]_i_2/O[3]
-                         net (fo=4, routed)           1.211    16.412    deficit_counter_reg[3][7]_i_2_n_4
-    SLICE_X6Y26          LUT5 (Prop_lut5_I1_O)        0.307    16.719 r  deficit_counter[3][7]_i_1/O
-                         net (fo=1, routed)           0.000    16.719    deficit_counter[3][7]_i_1_n_0
-    SLICE_X6Y26          FDRE                                         r  deficit_counter_reg[3][7]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 f  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 f  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 f  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.016    14.639    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I0_O)        0.124    14.763 r  grant_OBUF[1]_inst_i_5/O
+                         net (fo=2, routed)           0.670    15.433    grant_OBUF[1]_inst_i_5_n_0
+    SLICE_X8Y20          LUT6 (Prop_lut6_I3_O)        0.124    15.557 r  grant_OBUF[1]_inst_i_2/O
+                         net (fo=10, routed)          0.901    16.459    sel0[0]
+    SLICE_X7Y15          LUT2 (Prop_lut2_I0_O)        0.124    16.583 r  grant_OBUF[1]_inst_i_1/O
+                         net (fo=29, routed)          1.511    18.094    grant_done_OBUF[1]
+    SLICE_X2Y19          LUT6 (Prop_lut6_I4_O)        0.124    18.218 r  deficit_counter[3][11]_i_6/O
+                         net (fo=1, routed)           0.791    19.008    deficit_counter[3][11]_i_6_n_0
+    SLICE_X3Y19          CARRY4 (Prop_carry4_DI[1]_O[3])
+                                                      0.596    19.604 r  deficit_counter_reg[3][11]_i_3/O[3]
+                         net (fo=4, routed)           1.167    20.771    deficit_counter_reg[3][11]_i_3_n_4
+    SLICE_X3Y16          LUT6 (Prop_lut6_I2_O)        0.306    21.077 r  deficit_counter[0][11]_i_2/O
+                         net (fo=1, routed)           0.000    21.077    deficit_counter[0][11]_i_2_n_0
+    SLICE_X3Y16          FDRE                                         r  deficit_counter_reg[0][11]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[2][8]/D
+  Destination:            grant[2]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.705ns  (logic 5.779ns (34.592%)  route 10.926ns (65.408%))
-  Logic Levels:           18  (CARRY4=8 IBUF=1 LUT2=2 LUT4=2 LUT5=1 LUT6=4)
+  Data Path Delay:        21.052ns  (logic 7.802ns (37.059%)  route 13.250ns (62.941%))
+  Logic Levels:           16  (CARRY4=5 IBUF=1 LUT2=3 LUT4=2 LUT5=2 LUT6=2 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.003 r  deficit_counter_reg[3][7]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.003    deficit_counter_reg[3][7]_i_2_n_0
-    SLICE_X4Y22          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    15.222 r  deficit_counter_reg[3][11]_i_4/O[0]
-                         net (fo=4, routed)           1.188    16.410    deficit_counter_reg[3][11]_i_4_n_7
-    SLICE_X3Y26          LUT6 (Prop_lut6_I2_O)        0.295    16.705 r  deficit_counter[2][8]_i_1/O
-                         net (fo=1, routed)           0.000    16.705    deficit_counter[2][8]_i_1_n_0
-    SLICE_X3Y26          FDRE                                         r  deficit_counter_reg[2][8]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 f  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 f  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.507    13.092    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.440 r  grant_OBUF[3]_inst_i_10/O
+                         net (fo=4, routed)           0.818    14.258    grant_OBUF[3]_inst_i_10_n_0
+    SLICE_X9Y20          LUT5 (Prop_lut5_I2_O)        0.124    14.382 r  grant_OBUF[3]_inst_i_7/O
+                         net (fo=3, routed)           0.828    15.210    grant_OBUF[3]_inst_i_7_n_0
+    SLICE_X7Y20          LUT6 (Prop_lut6_I5_O)        0.124    15.334 r  grant_OBUF[2]_inst_i_1/O
+                         net (fo=29, routed)          3.120    18.454    grant_done_OBUF[2]
+    W6                   OBUF (Prop_obuf_I_O)         2.598    21.052 r  grant_OBUF[2]_inst/O
+                         net (fo=0)                   0.000    21.052    grant[2]
+    W6                                                                r  grant[2]
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[2][6]/D
+  Destination:            deficit_counter_reg[0][4]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.645ns  (logic 5.688ns (34.169%)  route 10.958ns (65.831%))
-  Logic Levels:           17  (CARRY4=7 IBUF=1 LUT2=2 LUT4=2 LUT5=1 LUT6=4)
+  Data Path Delay:        21.027ns  (logic 6.504ns (30.934%)  route 14.522ns (69.066%))
+  Logic Levels:           20  (CARRY4=7 IBUF=1 LUT2=3 LUT4=2 LUT5=1 LUT6=6)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    15.125 r  deficit_counter_reg[3][7]_i_2/O[2]
-                         net (fo=4, routed)           1.219    16.344    deficit_counter_reg[3][7]_i_2_n_5
-    SLICE_X4Y28          LUT6 (Prop_lut6_I2_O)        0.301    16.645 r  deficit_counter[2][6]_i_1/O
-                         net (fo=1, routed)           0.000    16.645    deficit_counter[2][6]_i_1_n_0
-    SLICE_X4Y28          FDRE                                         r  deficit_counter_reg[2][6]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 f  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 f  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 f  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.016    14.639    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I0_O)        0.124    14.763 r  grant_OBUF[1]_inst_i_5/O
+                         net (fo=2, routed)           0.670    15.433    grant_OBUF[1]_inst_i_5_n_0
+    SLICE_X8Y20          LUT6 (Prop_lut6_I3_O)        0.124    15.557 r  grant_OBUF[1]_inst_i_2/O
+                         net (fo=10, routed)          1.593    17.151    sel0[0]
+    SLICE_X6Y16          LUT6 (Prop_lut6_I3_O)        0.124    17.275 r  deficit_counter[3][3]_i_6/O
+                         net (fo=2, routed)           0.992    18.267    deficit_counter[3][3]_i_6_n_0
+    SLICE_X3Y17          LUT6 (Prop_lut6_I0_O)        0.124    18.391 r  deficit_counter[3][3]_i_10/O
+                         net (fo=1, routed)           0.000    18.391    deficit_counter[3][3]_i_10_n_0
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    18.923 r  deficit_counter_reg[3][3]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.923    deficit_counter_reg[3][3]_i_2_n_0
+    SLICE_X3Y18          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.145 r  deficit_counter_reg[3][7]_i_2/O[0]
+                         net (fo=4, routed)           1.583    20.728    deficit_counter_reg[3][7]_i_2_n_7
+    SLICE_X3Y15          LUT6 (Prop_lut6_I2_O)        0.299    21.027 r  deficit_counter[0][4]_i_1/O
+                         net (fo=1, routed)           0.000    21.027    deficit_counter[0][4]_i_1_n_0
+    SLICE_X3Y15          FDRE                                         r  deficit_counter_reg[0][4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 packet_size[2]
+  Source:                 packet_size[11]
                             (input port)
-  Destination:            deficit_counter_reg[3][8]/D
+  Destination:            deficit_counter_reg[1][4]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        16.626ns  (logic 5.779ns (34.755%)  route 10.848ns (65.245%))
-  Logic Levels:           18  (CARRY4=8 IBUF=1 LUT2=2 LUT4=2 LUT5=2 LUT6=3)
+  Data Path Delay:        20.967ns  (logic 6.504ns (31.023%)  route 14.462ns (68.977%))
+  Logic Levels:           20  (CARRY4=7 IBUF=1 LUT2=3 LUT4=2 LUT5=1 LUT6=6)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    Y4                                                0.000     0.000 r  packet_size[2]
-                         net (fo=0)                   0.000     0.000    packet_size[2]
-    Y4                   IBUF (Prop_ibuf_I_O)         0.945     0.945 r  packet_size_IBUF[2]_inst/O
-                         net (fo=5, routed)           1.758     2.703    packet_size_IBUF[2]
-    SLICE_X2Y20          LUT4 (Prop_lut4_I2_O)        0.124     2.827 r  deficit_counter[3][8]_i_51/O
-                         net (fo=1, routed)           0.000     2.827    deficit_counter[3][8]_i_51_n_0
+    Y6                                                0.000     0.000 r  packet_size[11]
+                         net (fo=0)                   0.000     0.000    packet_size[11]
+    Y6                   IBUF (Prop_ibuf_I_O)         0.969     0.969 r  packet_size_IBUF[11]_inst/O
+                         net (fo=5, routed)           1.904     2.873    packet_size_IBUF[11]
+    SLICE_X6Y17          LUT4 (Prop_lut4_I0_O)        0.124     2.997 r  grant_OBUF[3]_inst_i_71/O
+                         net (fo=1, routed)           0.000     2.997    grant_OBUF[3]_inst_i_71_n_0
+    SLICE_X6Y17          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.530 r  grant_OBUF[3]_inst_i_36/CO[3]
+                         net (fo=1, routed)           0.000     3.530    grant_OBUF[3]_inst_i_36_n_0
+    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157     3.687 r  grant_OBUF[3]_inst_i_20/CO[1]
+                         net (fo=1, routed)           1.116     4.804    need_quantum217_in
+    SLICE_X1Y17          LUT4 (Prop_lut4_I2_O)        0.332     5.136 f  grant_OBUF[3]_inst_i_14/O
+                         net (fo=8, routed)           1.209     6.345    grant_OBUF[3]_inst_i_14_n_0
+    SLICE_X7Y21          LUT5 (Prop_lut5_I4_O)        0.152     6.497 r  grant_OBUF[3]_inst_i_17/O
+                         net (fo=9, routed)           0.486     6.982    grant_OBUF[3]_inst_i_17_n_0
+    SLICE_X2Y20          LUT2 (Prop_lut2_I1_O)        0.326     7.308 r  deficit_counter[2][8]_i_3/O
+                         net (fo=1, routed)           0.000     7.308    deficit_counter[2][8]_i_3_n_0
     SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     3.360 r  deficit_counter_reg[3][8]_i_35/CO[3]
-                         net (fo=1, routed)           0.000     3.360    deficit_counter_reg[3][8]_i_35_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.157     3.517 r  deficit_counter_reg[3][8]_i_17/CO[1]
-                         net (fo=1, routed)           0.698     4.215    need_quantum2
-    SLICE_X4Y23          LUT4 (Prop_lut4_I0_O)        0.332     4.547 r  deficit_counter[3][8]_i_6/O
-                         net (fo=4, routed)           1.157     5.704    deficit_counter[3][8]_i_6_n_0
-    SLICE_X5Y26          LUT6 (Prop_lut6_I4_O)        0.124     5.828 r  deficit_counter[3][8]_i_3/O
-                         net (fo=1, routed)           0.000     5.828    deficit_counter[3][8]_i_3_n_0
-    SLICE_X5Y26          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550     6.378 r  deficit_counter_reg[3][8]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     6.378    deficit_counter_reg[3][8]_i_2_n_0
-    SLICE_X5Y27          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     6.712 f  deficit_counter_reg[3][11]_i_5/O[1]
-                         net (fo=4, routed)           0.809     7.521    avail_deficit[10]
-    SLICE_X4Y27          LUT2 (Prop_lut2_I1_O)        0.303     7.824 r  next_check[3]_i_6/O
-                         net (fo=1, routed)           0.000     7.824    next_check[3]_i_6_n_0
-    SLICE_X4Y27          CARRY4 (Prop_carry4_S[1]_CO[1])
-                                                      0.492     8.316 r  next_check_reg[3]_i_2/CO[1]
-                         net (fo=1, routed)           0.986     9.302    eligible0
-    SLICE_X4Y23          LUT2 (Prop_lut2_I1_O)        0.332     9.634 r  next_check[3]_i_1/O
-                         net (fo=10, routed)          1.106    10.740    eligible[3]
-    SLICE_X0Y20          LUT6 (Prop_lut6_I0_O)        0.124    10.864 r  deficit_counter[3][11]_i_6/O
-                         net (fo=26, routed)          1.001    11.866    grant[3]_i_2_n_0
-    SLICE_X6Y25          LUT6 (Prop_lut6_I2_O)        0.124    11.990 r  deficit_counter[3][3]_i_14/O
-                         net (fo=2, routed)           1.619    13.609    deficit_counter[3][3]_i_14_n_0
-    SLICE_X6Y20          LUT5 (Prop_lut5_I0_O)        0.124    13.733 r  deficit_counter[3][3]_i_6/O
-                         net (fo=1, routed)           0.604    14.336    deficit_counter[3][3]_i_6_n_0
-    SLICE_X4Y20          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.550    14.886 r  deficit_counter_reg[3][3]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.886    deficit_counter_reg[3][3]_i_2_n_0
-    SLICE_X4Y21          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.003 r  deficit_counter_reg[3][7]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.003    deficit_counter_reg[3][7]_i_2_n_0
-    SLICE_X4Y22          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    15.222 r  deficit_counter_reg[3][11]_i_4/O[0]
-                         net (fo=4, routed)           1.109    16.331    deficit_counter_reg[3][11]_i_4_n_7
-    SLICE_X6Y26          LUT5 (Prop_lut5_I1_O)        0.295    16.626 r  deficit_counter[3][8]_i_1/O
-                         net (fo=1, routed)           0.000    16.626    deficit_counter[3][8]_i_1_n_0
-    SLICE_X6Y26          FDRE                                         r  deficit_counter_reg[3][8]/D
+                                                      0.533     7.841 r  deficit_counter_reg[2][8]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     7.841    deficit_counter_reg[2][8]_i_2_n_0
+    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.164 f  deficit_counter_reg[2][11]_i_3/O[1]
+                         net (fo=5, routed)           1.282     9.446    deficit_counter_reg[2][11]_i_3_n_6
+    SLICE_X2Y18          LUT2 (Prop_lut2_I0_O)        0.306     9.752 r  next_check_OBUF[2]_inst_i_6/O
+                         net (fo=1, routed)           0.000     9.752    next_check_OBUF[2]_inst_i_6_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    10.244 f  next_check_OBUF[2]_inst_i_2/CO[1]
+                         net (fo=1, routed)           0.980    11.225    eligible00_in
+    SLICE_X0Y18          LUT2 (Prop_lut2_I0_O)        0.360    11.585 f  next_check_OBUF[2]_inst_i_1/O
+                         net (fo=4, routed)           1.690    13.275    next_check_OBUF[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I5_O)        0.348    13.623 f  grant_OBUF[3]_inst_i_13/O
+                         net (fo=6, routed)           1.016    14.639    grant_OBUF[3]_inst_i_13_n_0
+    SLICE_X8Y19          LUT6 (Prop_lut6_I0_O)        0.124    14.763 r  grant_OBUF[1]_inst_i_5/O
+                         net (fo=2, routed)           0.670    15.433    grant_OBUF[1]_inst_i_5_n_0
+    SLICE_X8Y20          LUT6 (Prop_lut6_I3_O)        0.124    15.557 r  grant_OBUF[1]_inst_i_2/O
+                         net (fo=10, routed)          1.593    17.151    sel0[0]
+    SLICE_X6Y16          LUT6 (Prop_lut6_I3_O)        0.124    17.275 r  deficit_counter[3][3]_i_6/O
+                         net (fo=2, routed)           0.992    18.267    deficit_counter[3][3]_i_6_n_0
+    SLICE_X3Y17          LUT6 (Prop_lut6_I0_O)        0.124    18.391 r  deficit_counter[3][3]_i_10/O
+                         net (fo=1, routed)           0.000    18.391    deficit_counter[3][3]_i_10_n_0
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    18.923 r  deficit_counter_reg[3][3]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    18.923    deficit_counter_reg[3][3]_i_2_n_0
+    SLICE_X3Y18          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.145 r  deficit_counter_reg[3][7]_i_2/O[0]
+                         net (fo=4, routed)           1.523    20.668    deficit_counter_reg[3][7]_i_2_n_7
+    SLICE_X6Y16          LUT6 (Prop_lut6_I2_O)        0.299    20.967 r  deficit_counter[1][4]_i_1/O
+                         net (fo=1, routed)           0.000    20.967    deficit_counter[1][4]_i_1_n_0
+    SLICE_X6Y16          FDRE                                         r  deficit_counter_reg[1][4]/D
   -------------------------------------------------------------------    -------------------
 
 
@@ -816,117 +810,22 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 deficit_counter_reg[1][3]/C
+  Source:                 deficit_counter_reg[3][4]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            deficit_counter_reg[1][3]/D
+  Destination:            deficit_counter_reg[3][4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.354ns  (logic 0.186ns (52.507%)  route 0.168ns (47.493%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
+  Data Path Delay:        0.353ns  (logic 0.186ns (52.734%)  route 0.167ns (47.266%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X5Y19          FDRE                         0.000     0.000 r  deficit_counter_reg[1][3]/C
-    SLICE_X5Y19          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[1][3]/Q
-                         net (fo=7, routed)           0.168     0.309    deficit_counter_reg[1][3]
-    SLICE_X5Y19          LUT5 (Prop_lut5_I2_O)        0.045     0.354 r  deficit_counter[1][3]_i_1/O
-                         net (fo=1, routed)           0.000     0.354    deficit_counter[1][3]_i_1_n_0
-    SLICE_X5Y19          FDRE                                         r  deficit_counter_reg[1][3]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 deficit_counter_reg[1][4]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            deficit_counter_reg[1][4]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.354ns  (logic 0.186ns (52.507%)  route 0.168ns (47.493%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y20          FDRE                         0.000     0.000 r  deficit_counter_reg[1][4]/C
-    SLICE_X5Y20          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[1][4]/Q
-                         net (fo=7, routed)           0.168     0.309    deficit_counter_reg[1][4]
-    SLICE_X5Y20          LUT5 (Prop_lut5_I2_O)        0.045     0.354 r  deficit_counter[1][4]_i_1/O
-                         net (fo=1, routed)           0.000     0.354    deficit_counter[1][4]_i_1_n_0
-    SLICE_X5Y20          FDRE                                         r  deficit_counter_reg[1][4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 deficit_counter_reg[3][0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            deficit_counter_reg[3][0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.354ns  (logic 0.186ns (52.507%)  route 0.168ns (47.493%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X7Y24          FDRE                         0.000     0.000 r  deficit_counter_reg[3][0]/C
-    SLICE_X7Y24          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[3][0]/Q
-                         net (fo=6, routed)           0.168     0.309    deficit_counter_reg[3][0]
-    SLICE_X7Y24          LUT5 (Prop_lut5_I2_O)        0.045     0.354 r  deficit_counter[3][0]_i_1/O
-                         net (fo=1, routed)           0.000     0.354    deficit_counter[3][0]_i_1_n_0
-    SLICE_X7Y24          FDRE                                         r  deficit_counter_reg[3][0]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 rr_ptr_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            rr_ptr_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.358ns  (logic 0.209ns (58.331%)  route 0.149ns (41.669%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y23          FDRE                         0.000     0.000 r  rr_ptr_reg[1]/C
-    SLICE_X4Y23          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  rr_ptr_reg[1]/Q
-                         net (fo=10, routed)          0.149     0.313    rr_ptr[1]
-    SLICE_X4Y23          LUT5 (Prop_lut5_I0_O)        0.045     0.358 r  rr_ptr[1]_i_1/O
-                         net (fo=1, routed)           0.000     0.358    rr_ptr[1]_i_1_n_0
-    SLICE_X4Y23          FDRE                                         r  rr_ptr_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 deficit_counter_reg[1][1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            deficit_counter_reg[1][1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.366ns  (logic 0.186ns (50.768%)  route 0.180ns (49.232%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y23          FDRE                         0.000     0.000 r  deficit_counter_reg[1][1]/C
-    SLICE_X5Y23          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[1][1]/Q
-                         net (fo=7, routed)           0.180     0.321    deficit_counter_reg[1][1]
-    SLICE_X5Y23          LUT5 (Prop_lut5_I2_O)        0.045     0.366 r  deficit_counter[1][1]_i_1/O
-                         net (fo=1, routed)           0.000     0.366    deficit_counter[1][1]_i_1_n_0
-    SLICE_X5Y23          FDRE                                         r  deficit_counter_reg[1][1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 deficit_counter_reg[1][2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            deficit_counter_reg[1][2]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.366ns  (logic 0.186ns (50.768%)  route 0.180ns (49.232%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y20          FDRE                         0.000     0.000 r  deficit_counter_reg[1][2]/C
-    SLICE_X3Y20          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[1][2]/Q
-                         net (fo=7, routed)           0.180     0.321    deficit_counter_reg[1][2]
-    SLICE_X3Y20          LUT5 (Prop_lut5_I2_O)        0.045     0.366 r  deficit_counter[1][2]_i_1/O
-                         net (fo=1, routed)           0.000     0.366    deficit_counter[1][2]_i_1_n_0
-    SLICE_X3Y20          FDRE                                         r  deficit_counter_reg[1][2]/D
+    SLICE_X5Y19          FDRE                         0.000     0.000 r  deficit_counter_reg[3][4]/C
+    SLICE_X5Y19          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[3][4]/Q
+                         net (fo=6, routed)           0.167     0.308    deficit_counter_reg[3][4]
+    SLICE_X5Y19          LUT6 (Prop_lut6_I3_O)        0.045     0.353 r  deficit_counter[3][4]_i_1/O
+                         net (fo=1, routed)           0.000     0.353    p_1_in[4]
+    SLICE_X5Y19          FDRE                                         r  deficit_counter_reg[3][4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -935,55 +834,55 @@ Slack:                    inf
   Destination:            deficit_counter_reg[2][0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.370ns  (logic 0.209ns (56.420%)  route 0.161ns (43.580%))
+  Data Path Delay:        0.353ns  (logic 0.186ns (52.725%)  route 0.167ns (47.275%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y24          FDRE                         0.000     0.000 r  deficit_counter_reg[2][0]/C
-    SLICE_X6Y24          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  deficit_counter_reg[2][0]/Q
-                         net (fo=6, routed)           0.161     0.325    deficit_counter_reg[2][0]
-    SLICE_X6Y24          LUT6 (Prop_lut6_I0_O)        0.045     0.370 r  deficit_counter[2][0]_i_1/O
-                         net (fo=1, routed)           0.000     0.370    deficit_counter[2][0]_i_1_n_0
-    SLICE_X6Y24          FDRE                                         r  deficit_counter_reg[2][0]/D
+    SLICE_X5Y16          FDRE                         0.000     0.000 r  deficit_counter_reg[2][0]/C
+    SLICE_X5Y16          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[2][0]/Q
+                         net (fo=6, routed)           0.167     0.308    deficit_counter_reg_n_0_[2][0]
+    SLICE_X5Y16          LUT6 (Prop_lut6_I4_O)        0.045     0.353 r  deficit_counter[2][0]_i_1/O
+                         net (fo=1, routed)           0.000     0.353    deficit_counter[2][0]_i_1_n_0
+    SLICE_X5Y16          FDRE                                         r  deficit_counter_reg[2][0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 deficit_counter_reg[3][1]/C
+  Source:                 rr_ptr_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            deficit_counter_reg[3][1]/D
+  Destination:            rr_ptr_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.376ns  (logic 0.186ns (49.428%)  route 0.190ns (50.572%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y24          FDRE                         0.000     0.000 r  deficit_counter_reg[3][1]/C
-    SLICE_X5Y24          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[3][1]/Q
-                         net (fo=6, routed)           0.190     0.331    deficit_counter_reg[3][1]
-    SLICE_X5Y24          LUT5 (Prop_lut5_I2_O)        0.045     0.376 r  deficit_counter[3][1]_i_1/O
-                         net (fo=1, routed)           0.000     0.376    deficit_counter[3][1]_i_1_n_0
-    SLICE_X5Y24          FDRE                                         r  deficit_counter_reg[3][1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 deficit_counter_reg[0][2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            deficit_counter_reg[0][2]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.384ns  (logic 0.209ns (54.393%)  route 0.175ns (45.607%))
+  Data Path Delay:        0.353ns  (logic 0.183ns (51.772%)  route 0.170ns (48.228%))
   Logic Levels:           2  (FDRE=1 LUT4=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y20          FDRE                         0.000     0.000 r  deficit_counter_reg[0][2]/C
-    SLICE_X6Y20          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  deficit_counter_reg[0][2]/Q
-                         net (fo=7, routed)           0.175     0.339    deficit_counter_reg[0][2]
-    SLICE_X6Y20          LUT4 (Prop_lut4_I2_O)        0.045     0.384 r  deficit_counter[0][2]_i_1/O
-                         net (fo=1, routed)           0.000     0.384    deficit_counter[0][2]_i_1_n_0
-    SLICE_X6Y20          FDRE                                         r  deficit_counter_reg[0][2]/D
+    SLICE_X7Y15          FDRE                         0.000     0.000 r  rr_ptr_reg[0]/C
+    SLICE_X7Y15          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  rr_ptr_reg[0]/Q
+                         net (fo=13, routed)          0.170     0.311    rr_ptr[0]
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.042     0.353 r  rr_ptr[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.353    rr_ptr[0]_i_1_n_0
+    SLICE_X7Y15          FDRE                                         r  rr_ptr_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 deficit_counter_reg[0][1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            deficit_counter_reg[0][1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.354ns  (logic 0.186ns (52.507%)  route 0.168ns (47.493%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y15          FDRE                         0.000     0.000 r  deficit_counter_reg[0][1]/C
+    SLICE_X3Y15          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[0][1]/Q
+                         net (fo=6, routed)           0.168     0.309    deficit_counter_reg[0][1]
+    SLICE_X3Y15          LUT6 (Prop_lut6_I4_O)        0.045     0.354 r  deficit_counter[0][1]_i_1/O
+                         net (fo=1, routed)           0.000     0.354    deficit_counter[0][1]_i_1_n_0
+    SLICE_X3Y15          FDRE                                         r  deficit_counter_reg[0][1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -992,17 +891,112 @@ Slack:                    inf
   Destination:            deficit_counter_reg[2][1]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.354ns  (logic 0.186ns (52.498%)  route 0.168ns (47.502%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y15          FDRE                         0.000     0.000 r  deficit_counter_reg[2][1]/C
+    SLICE_X5Y15          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[2][1]/Q
+                         net (fo=6, routed)           0.168     0.309    deficit_counter_reg_n_0_[2][1]
+    SLICE_X5Y15          LUT6 (Prop_lut6_I4_O)        0.045     0.354 r  deficit_counter[2][1]_i_1/O
+                         net (fo=1, routed)           0.000     0.354    deficit_counter[2][1]_i_1_n_0
+    SLICE_X5Y15          FDRE                                         r  deficit_counter_reg[2][1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 deficit_counter_reg[1][1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            deficit_counter_reg[1][1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.365ns  (logic 0.186ns (50.911%)  route 0.179ns (49.089%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X7Y16          FDRE                         0.000     0.000 r  deficit_counter_reg[1][1]/C
+    SLICE_X7Y16          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[1][1]/Q
+                         net (fo=6, routed)           0.179     0.320    deficit_counter_reg[1][1]
+    SLICE_X7Y16          LUT6 (Prop_lut6_I3_O)        0.045     0.365 r  deficit_counter[1][1]_i_1/O
+                         net (fo=1, routed)           0.000     0.365    deficit_counter[1][1]_i_1_n_0
+    SLICE_X7Y16          FDRE                                         r  deficit_counter_reg[1][1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 deficit_counter_reg[1][2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            deficit_counter_reg[1][2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.365ns  (logic 0.186ns (50.902%)  route 0.179ns (49.098%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y17          FDRE                         0.000     0.000 r  deficit_counter_reg[1][2]/C
+    SLICE_X5Y17          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[1][2]/Q
+                         net (fo=6, routed)           0.179     0.320    deficit_counter_reg[1][2]
+    SLICE_X5Y17          LUT6 (Prop_lut6_I3_O)        0.045     0.365 r  deficit_counter[1][2]_i_1/O
+                         net (fo=1, routed)           0.000     0.365    deficit_counter[1][2]_i_1_n_0
+    SLICE_X5Y17          FDRE                                         r  deficit_counter_reg[1][2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 deficit_counter_reg[3][0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            deficit_counter_reg[3][0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.370ns  (logic 0.209ns (56.420%)  route 0.161ns (43.580%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y15          FDRE                         0.000     0.000 r  deficit_counter_reg[3][0]/C
+    SLICE_X4Y15          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  deficit_counter_reg[3][0]/Q
+                         net (fo=6, routed)           0.161     0.325    deficit_counter_reg[3][0]
+    SLICE_X4Y15          LUT6 (Prop_lut6_I3_O)        0.045     0.370 r  deficit_counter[3][0]_i_1/O
+                         net (fo=1, routed)           0.000     0.370    p_1_in[0]
+    SLICE_X4Y15          FDRE                                         r  deficit_counter_reg[3][0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 deficit_counter_reg[2][3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            deficit_counter_reg[2][3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.378ns  (logic 0.186ns (49.266%)  route 0.192ns (50.734%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y17          FDRE                         0.000     0.000 r  deficit_counter_reg[2][3]/C
+    SLICE_X1Y17          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  deficit_counter_reg[2][3]/Q
+                         net (fo=6, routed)           0.192     0.333    deficit_counter_reg_n_0_[2][3]
+    SLICE_X1Y17          LUT6 (Prop_lut6_I4_O)        0.045     0.378 r  deficit_counter[2][3]_i_1/O
+                         net (fo=1, routed)           0.000     0.378    deficit_counter[2][3]_i_1_n_0
+    SLICE_X1Y17          FDRE                                         r  deficit_counter_reg[2][3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 deficit_counter_reg[3][1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            deficit_counter_reg[3][1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.384ns  (logic 0.209ns (54.393%)  route 0.175ns (45.607%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y24          FDRE                         0.000     0.000 r  deficit_counter_reg[2][1]/C
-    SLICE_X6Y24          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  deficit_counter_reg[2][1]/Q
-                         net (fo=6, routed)           0.175     0.339    deficit_counter_reg[2][1]
-    SLICE_X6Y24          LUT6 (Prop_lut6_I0_O)        0.045     0.384 r  deficit_counter[2][1]_i_1/O
-                         net (fo=1, routed)           0.000     0.384    deficit_counter[2][1]_i_1_n_0
-    SLICE_X6Y24          FDRE                                         r  deficit_counter_reg[2][1]/D
+    SLICE_X4Y15          FDRE                         0.000     0.000 r  deficit_counter_reg[3][1]/C
+    SLICE_X4Y15          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  deficit_counter_reg[3][1]/Q
+                         net (fo=6, routed)           0.175     0.339    deficit_counter_reg[3][1]
+    SLICE_X4Y15          LUT6 (Prop_lut6_I4_O)        0.045     0.384 r  deficit_counter[3][1]_i_1/O
+                         net (fo=1, routed)           0.000     0.384    p_1_in[1]
+    SLICE_X4Y15          FDRE                                         r  deficit_counter_reg[3][1]/D
   -------------------------------------------------------------------    -------------------
 
 

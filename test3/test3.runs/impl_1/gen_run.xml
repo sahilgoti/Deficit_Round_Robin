@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1787517626">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1787627191">
   <File Type="PA-TCL" Name="arbiter.tcl"/>
   <File Type="REPORTS-TCL" Name="arbiter_reports.tcl"/>
   <File Type="INIT-TIMING" Name="arbiter_timing_summary_init.rpt"/>
@@ -56,12 +56,12 @@
   <File Type="ROUTE-RQS-PB" Name="arbiter_rqs_routed.pb"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="arbiter_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="arbiter_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="tb_arbiter_selfcheck_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="tb_arbiter_selfcheck_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="tb_arbiter_selfcheck_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="tb_arbiter_selfcheck_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="tb_arbiter_selfcheck_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="tb_arbiter_selfcheck_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="arbiter_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="arbiter_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="arbiter_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="arbiter_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="arbiter_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="arbiter_bus_skew_postroute_physopted.rpx"/>
   <File Type="NOC_TRAFFIC_SPEC_FILE" Name="arbiter.nts"/>
   <File Type="NOC_SOLUTION_FILE" Name="arbiter.ncr"/>
   <File Type="BG-BIT" Name="arbiter.bit"/>
@@ -140,7 +140,14 @@
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/clk.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/clk.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
